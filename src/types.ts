@@ -20,7 +20,9 @@ export interface InvoiceDetails {
     date: string;
     paymentTerms: string;
     signatory: string;
+    signatory: string;
     vehicleNumber?: string;
+    time?: string;
     termsAndConditions?: string; // Optional
 }
 

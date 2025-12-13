@@ -31,8 +31,8 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
             <div className="border-2 border-black flex flex-col min-h-[28cm] relative z-10">
 
                 {/* Watermark */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1] opacity-10">
-                    <img src="/logo.png" alt="Watermark" className="w-[700px] h-auto object-contain" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[-1] opacity-20">
+                    <img src="/logo.png" alt="Watermark" className="w-[900px] h-auto object-contain" />
                 </div>
 
                 {/* Top Header */}
@@ -78,7 +78,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                             <div className="font-bold">Bill No</div>
                             <div className="font-bold">: {data.details.invoiceNo}</div>
                             <div className="font-bold">Date</div>
-                            <div className="font-bold">: {data.details.date}</div>
+                            <div className="font-bold">: {data.details.date} {data.details.time && <span className="text-[11px] font-normal">({data.details.time})</span>}</div>
                         </div>
                     </div>
                 </div>
