@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-900 text-slate-100 font-sans antialiased;
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+}
+
+@layer utilities {
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg transition-all font-medium;
+  }
+
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg;
+  }
+
+  .input-field {
+    @apply w-full bg-slate-950 border border-slate-700 focus:border-blue-500 rounded-md px-3 py-2 text-slate-100 placeholder-slate-500 transition-colors outline-none;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0;
+  }
+}
