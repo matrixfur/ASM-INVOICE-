@@ -9,7 +9,7 @@ interface WelcomePageProps {
 
 export const WelcomePage: React.FC<WelcomePageProps> = ({ onCreateLocal, onCreateIGST, onViewHistory }) => {
     return (
-        <div className="flex-1 flex flex-col items-center justify-center p-8 bg-slate-900 text-slate-100 h-full">
+        <div className="flex-1 flex flex-col items-center justify-center p-8 bg-black text-slate-100 h-full">
             <div className="max-w-2xl w-full text-center space-y-8">
 
                 {/* Logo and Branding - Large with Animation */}
