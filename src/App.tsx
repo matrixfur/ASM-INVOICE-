@@ -65,7 +65,7 @@ function App() {
       <aside className="w-64 bg-slate-950 border-r border-slate-800 hidden lg:flex flex-col print:hidden">
         <div className="p-6 flex items-center gap-3">
           <img src="/app-logo.jpg" alt="Logo" className="w-8 h-8 rounded-full" />
-          <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">ASM INVOICE</h1>
+          <h1 className="text-xl font-bold bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 bg-clip-text text-transparent">ASM INTERIORS</h1>
         </div>
         <nav className="flex-1 px-4 space-y-2">
           {/* Main Invoices Section */}
