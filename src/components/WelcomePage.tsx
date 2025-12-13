@@ -23,8 +23,8 @@ export const WelcomePage: React.FC<WelcomePageProps> = ({ onCreateLocal, onCreat
                         />
                     </div>
                     <div className="space-y-2">
-                        <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
-                            ASM INVOICE
+                        <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 bg-clip-text text-transparent">
+                            ASM INTERIORS
                         </h1>
                         <p className="text-slate-400 text-lg">Professional Invoicing Solution</p>
                     </div>

@@ -122,6 +122,10 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
                     <input type="date" className="input-field" value={data.details.date} onChange={e => handleDetailChange('date', e.target.value)} />
                 </div>
                 <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">Time</label>
+                    <input type="time" className="input-field" value={data.details.time || ''} onChange={e => handleDetailChange('time', e.target.value)} />
+                </div>
+                <div className="space-y-1">
                     <label className="text-xs font-semibold text-slate-400">Payment Terms</label>
                     <input className="input-field" value={data.details.paymentTerms} onChange={e => handleDetailChange('paymentTerms', e.target.value)} />
                 </div>
