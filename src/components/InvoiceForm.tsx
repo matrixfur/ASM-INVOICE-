@@ -112,9 +112,41 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
             </div>
 
             {/* Invoice Meta */}
-            <div className="grid grid-cols-3 gap-4 border-t border-b border-slate-700 py-4 my-2">
+            <div className="grid grid-cols-4 gap-4 border-t border-b border-slate-700 py-4 my-2">
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Invoice No</label>
+                    <label className="text-xs font-semibold text-slate-400">P.O. Number</label>
+                    <input className="input-field" placeholder="PO-001" value={data.details.poNumber || ''} onChange={e => handleDetailChange('poNumber', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">P.O. Date</label>
+                    <input type="date" className="input-field" value={data.details.poDate || ''} onChange={e => handleDetailChange('poDate', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">Despatched Through</label>
+                    <input className="input-field" placeholder="Carrier/Method" value={data.details.despatchedThrough || ''} onChange={e => handleDetailChange('despatchedThrough', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">L.R. Number</label>
+                    <input className="input-field" placeholder="LR-001" value={data.details.lrNumber || ''} onChange={e => handleDetailChange('lrNumber', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">L.R. Date</label>
+                    <input type="date" className="input-field" value={data.details.lrDate || ''} onChange={e => handleDetailChange('lrDate', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">Freight</label>
+                    <input className="input-field" placeholder="Paid/To Pay" value={data.details.freight || ''} onChange={e => handleDetailChange('freight', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">D.C. Number</label>
+                    <input className="input-field" placeholder="DC-001" value={data.details.dcNumber || ''} onChange={e => handleDetailChange('dcNumber', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">D.C. Date</label>
+                    <input type="date" className="input-field" value={data.details.dcDate || ''} onChange={e => handleDetailChange('dcDate', e.target.value)} />
+                </div>
+                <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-400">Bill No</label>
                     <input className="input-field" value={data.details.invoiceNo} onChange={e => handleDetailChange('invoiceNo', e.target.value)} />
                 </div>
                 <div className="space-y-1">
@@ -124,14 +156,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
                 <div className="space-y-1">
                     <label className="text-xs font-semibold text-slate-400">Time</label>
                     <input type="time" className="input-field" value={data.details.time || ''} onChange={e => handleDetailChange('time', e.target.value)} />
-                </div>
-                <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Payment Terms</label>
-                    <input className="input-field" value={data.details.paymentTerms} onChange={e => handleDetailChange('paymentTerms', e.target.value)} />
-                </div>
-                <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Payment Terms</label>
-                    <input className="input-field" value={data.details.paymentTerms} onChange={e => handleDetailChange('paymentTerms', e.target.value)} />
                 </div>
             </div>
 

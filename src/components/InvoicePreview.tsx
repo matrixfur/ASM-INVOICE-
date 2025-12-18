@@ -60,6 +60,16 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                     </h2>
                 </div>
 
+                {/* Bill No and Date Section */}
+                <div className="flex border-b-2 border-black">
+                    <div className="w-1/2 border-r-2 border-black p-2 pl-4">
+                        <div className="font-bold text-[13px]">Bill No: {data.details.invoiceNo}</div>
+                    </div>
+                    <div className="w-1/2 p-2 pr-4 text-right border-l-2 border-black">
+                        <div className="font-bold text-[13px]">Date: {data.details.date}</div>
+                    </div>
+                </div>
+
                 {/* Customer & Invoice Details */}
                 <div className="flex border-b-2 border-black">
                     <div className="w-[55%] border-r-2 border-black p-3 pl-4">
@@ -72,13 +82,16 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                         </div>
                     </div>
                     <div className="w-[45%] p-3">
-                        <div className="grid grid-cols-[110px_1fr] gap-y-1 text-[13px]">
-                            <div className="font-bold">Payment Terms</div>
-                            <div className="font-bold">: {data.details.paymentTerms}</div>
-                            <div className="font-bold">Bill No</div>
-                            <div className="font-bold">: {data.details.invoiceNo}</div>
-                            <div className="font-bold">Date</div>
-                            <div className="font-bold">: {data.details.date} {data.details.time && <span className="text-[11px] font-normal">({data.details.time})</span>}</div>
+                        <div className="grid grid-cols-[110px_1fr] gap-y-1 text-[11px]">
+                            <div className="font-bold">P.O. NO & Date</div>
+                            <div className="font-bold">: {data.details.poNumber || ''} {data.details.poDate ? `(${data.details.poDate})` : ''}</div>
+                            <div className="font-bold">Despatched Through</div>
+                            <div className="font-bold whitespace-nowrap">: {data.details.despatchedThrough || ''}</div>
+                            <div className="font-bold">L.R.No & Date</div>
+                            <div className="font-bold">: {data.details.lrNumber || ''} {data.details.lrDate ? `(${data.details.lrDate})` : ''}</div>
+
+                            <div className="font-bold">D.C.No & Dt</div>
+                            <div className="font-bold">: {data.details.dcNumber || ''} {data.details.dcDate ? `(${data.details.dcDate})` : ''}</div>
                         </div>
                     </div>
                 </div>
@@ -196,9 +209,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                             <div className="font-medium italic text-[14px] mt-2">
                                 Rupees {numberToWords(finalAmount)} Only
                             </div>
-                            <div className="mt-4 text-[12px] font-medium">
-                                Time : {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}
-                            </div>
+
                         </div>
                         <div className="w-72">
                             <div className="flex justify-between px-3 py-2 text-[13px] font-medium">

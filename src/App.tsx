@@ -25,7 +25,15 @@ const INITIAL_DATA: InvoiceData = {
     date: '2025-11-11',
     time: '10:00',
     paymentTerms: 'Credit',
-    signatory: 'Authorised Signatory'
+    signatory: 'Authorised Signatory',
+    poNumber: '',
+    poDate: '',
+    despatchedThrough: '',
+    lrNumber: '',
+    lrDate: '',
+    freight: '',
+    dcNumber: '',
+    dcDate: ''
   },
   items: []
 };
