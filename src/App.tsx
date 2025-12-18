@@ -16,14 +16,14 @@ const INITIAL_DATA: InvoiceData = {
     phone: '7092983982, 7092983986'
   },
   receiver: {
-    name: 'ASM TRADERS',
-    address: 'SF NO 5/68 PODANUR MAIN ROAD\nATHUPALAYAM\nCoimbatore',
+    name: '',
+    address: '',
     gstin: ''
   },
   details: {
-    invoiceNo: '1117',
-    date: '2025-11-11',
-    time: '10:00',
+    invoiceNo: '',
+    date: new Date().toISOString().split('T')[0],
+    time: '',
     paymentTerms: 'Credit',
     signatory: 'Authorised Signatory',
     poNumber: '',
@@ -60,6 +60,17 @@ function App() {
   };
 
   const handlePrint = () => {
+    const missingFields = [];
+    if (!data.details.invoiceNo) missingFields.push('Bill No');
+    if (!data.details.date) missingFields.push('Date');
+    if (!data.details.vehicleNumber) missingFields.push('Vehicle No');
+    if (!data.receiver.name) missingFields.push('Customer Name (To)');
+
+    if (missingFields.length > 0) {
+      alert(`Please fill the following mandatory fields before printing:\n- ${missingFields.join('\n- ')}`);
+      return;
+    }
+
     window.print();
   };
 
