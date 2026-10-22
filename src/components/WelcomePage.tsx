@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, LayoutDashboard, Plus, Building2, CheckCircle2, ArrowRight } from 'lucide-react';
+import { LayoutDashboard, Plus, Building2, CheckCircle2, ArrowRight } from 'lucide-react';
 import type { BusinessProfile } from '../App';
 
 interface WelcomePageProps {

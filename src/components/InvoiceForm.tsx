@@ -184,7 +184,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
                                 <th className="p-3 w-10"></th>
                             </tr>
                         </thead>
-                        <tbody style={{divideColor:'#f3f0ff'}}>
+                        <tbody>
                             {data.items.map((item, index) => (
                                 <tr key={item.id} style={{borderTop:'1px solid #f3f0ff', transition:'background 0.15s'}} onMouseEnter={e=>(e.currentTarget as HTMLElement).style.background='#faf9ff'} onMouseLeave={e=>(e.currentTarget as HTMLElement).style.background=''}>
                                     <td className="p-2 relative">
