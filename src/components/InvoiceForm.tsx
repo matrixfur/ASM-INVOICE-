@@ -84,7 +84,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
     };
 
     return (
-        <div className="space-y-6 p-4">
+        <div className="space-y-5 p-4 sm:p-5">
 
             <ProductManager
                 isOpen={isProductManagerOpen}
@@ -92,10 +92,10 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
                 onSelect={handleProductSelectFromManager}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Sender Section */}
                 <div className="space-y-3">
-                    <h3 className="font-semibold text-slate-400 uppercase text-xs tracking-wider">From (Distributor)</h3>
+                    <h3 className="section-label">From (Distributor)</h3>
                     <input className="input-field" placeholder="Name" value={data.sender.name} onChange={e => handleSenderChange('name', e.target.value)} />
                     <textarea className="input-field h-20" placeholder="Address" value={data.sender.address} onChange={e => handleSenderChange('address', e.target.value)} />
                     <input className="input-field" placeholder="GSTIN" value={data.sender.gstin} onChange={e => handleSenderChange('gstin', e.target.value)} />
@@ -104,7 +104,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
 
                 {/* Receiver Section */}
                 <div className="space-y-3">
-                    <h3 className="font-semibold text-slate-400 uppercase text-xs tracking-wider">To (Customer)</h3>
+                    <h3 className="section-label">To (Customer)</h3>
                     <input className="input-field" placeholder="Name" value={data.receiver.name} onChange={e => handleReceiverChange('name', e.target.value)} />
                     <textarea className="input-field h-20" placeholder="Address" value={data.receiver.address} onChange={e => handleReceiverChange('address', e.target.value)} />
                     <input className="input-field" placeholder="GSTIN" value={data.receiver.gstin} onChange={e => handleReceiverChange('gstin', e.target.value)} />
@@ -112,49 +112,49 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
             </div>
 
             {/* Invoice Meta */}
-            <div className="grid grid-cols-4 gap-4 border-t border-b border-slate-700 py-4 my-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 py-4 my-2" style={{borderTop:'1px solid #ede9fe',borderBottom:'1px solid #ede9fe'}}>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">P.O. Number</label>
+                    <label className="section-label">P.O. Number</label>
                     <input className="input-field" placeholder="PO-001" value={data.details.poNumber || ''} onChange={e => handleDetailChange('poNumber', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">P.O. Date</label>
+                    <label className="section-label">P.O. Date</label>
                     <input type="date" className="input-field" value={data.details.poDate || ''} onChange={e => handleDetailChange('poDate', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Despatched Through</label>
+                    <label className="section-label">Despatched Through</label>
                     <input className="input-field" placeholder="Carrier/Method" value={data.details.despatchedThrough || ''} onChange={e => handleDetailChange('despatchedThrough', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">L.R. Number</label>
+                    <label className="section-label">L.R. Number</label>
                     <input className="input-field" placeholder="LR-001" value={data.details.lrNumber || ''} onChange={e => handleDetailChange('lrNumber', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">L.R. Date</label>
+                    <label className="section-label">L.R. Date</label>
                     <input type="date" className="input-field" value={data.details.lrDate || ''} onChange={e => handleDetailChange('lrDate', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Freight</label>
+                    <label className="section-label">Freight</label>
                     <input className="input-field" placeholder="Paid/To Pay" value={data.details.freight || ''} onChange={e => handleDetailChange('freight', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">D.C. Number</label>
+                    <label className="section-label">D.C. Number</label>
                     <input className="input-field" placeholder="DC-001" value={data.details.dcNumber || ''} onChange={e => handleDetailChange('dcNumber', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">D.C. Date</label>
+                    <label className="section-label">D.C. Date</label>
                     <input type="date" className="input-field" value={data.details.dcDate || ''} onChange={e => handleDetailChange('dcDate', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Bill No</label>
+                    <label className="section-label">Bill No</label>
                     <input className="input-field" value={data.details.invoiceNo} onChange={e => handleDetailChange('invoiceNo', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Date</label>
+                    <label className="section-label">Date</label>
                     <input type="date" className="input-field" value={data.details.date} onChange={e => handleDetailChange('date', e.target.value)} />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-xs font-semibold text-slate-400">Time</label>
+                    <label className="section-label">Time</label>
                     <input type="time" className="input-field" value={data.details.time || ''} onChange={e => handleDetailChange('time', e.target.value)} />
                 </div>
             </div>
@@ -162,18 +162,18 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
             {/* Items Section */}
             <div>
                 <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-semibold text-slate-400 uppercase text-xs tracking-wider">Items</h3>
+                    <h3 className="section-label">Items</h3>
                     <button
                         onClick={() => setIsProductManagerOpen(true)}
-                        className="text-xs flex items-center gap-1 text-blue-400 hover:text-blue-300"
+                        style={{ fontSize:'12px', display:'flex', alignItems:'center', gap:'5px', color:'#7c3aed', fontWeight:600, background:'#f5f3ff', border:'1px solid #ede9fe', borderRadius:'7px', padding:'4px 10px', cursor:'pointer' }}
                     >
-                        <Package size={14} /> Manage Products
+                        <Package size={13} /> Manage Products
                     </button>
                 </div>
 
-                <div className="overflow-x-auto rounded-lg border border-slate-700">
-                    <table className="w-full text-sm text-left text-slate-300">
-                        <thead className="bg-slate-900 text-xs uppercase bg-slate-700/50 text-slate-300">
+                <div className="overflow-x-auto rounded-lg" style={{border:'1px solid #ede9fe'}}>
+                    <table className="w-full text-sm text-left" style={{color:'#374151'}}>
+                        <thead style={{background:'linear-gradient(135deg,#f5f3ff,#ede9fe70)', fontSize:'11px', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.06em', color:'#7c3aed'}}>
                             <tr>
                                 <th className="p-3">Description</th>
                                 <th className="p-3 w-24">HSN</th>
@@ -184,13 +184,14 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
                                 <th className="p-3 w-10"></th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-700">
+                        <tbody style={{divideColor:'#f3f0ff'}}>
                             {data.items.map((item, index) => (
-                                <tr key={item.id} className="hover:bg-slate-700/30 transition-colors">
+                                <tr key={item.id} style={{borderTop:'1px solid #f3f0ff', transition:'background 0.15s'}} onMouseEnter={e=>(e.currentTarget as HTMLElement).style.background='#faf9ff'} onMouseLeave={e=>(e.currentTarget as HTMLElement).style.background=''}>
                                     <td className="p-2 relative">
                                         <input
                                             list={`products-list-${index}`}
-                                            className="input-field bg-transparent border-none focus:bg-slate-800 w-full"
+                                            className="input-field"
+                                            style={{background:'transparent',border:'none',borderRadius:0}}
                                             value={item.description}
                                             onChange={e => handleProductSelect(index, e.target.value)}
                                             placeholder="Type or select..."
@@ -202,37 +203,37 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({ data, onChange }) => {
                                         </datalist>
                                     </td>
                                     <td className="p-2">
-                                        <input className="input-field bg-transparent border-none focus:bg-slate-800 text-center" value={item.hsnCode} onChange={e => handleItemChange(index, 'hsnCode', e.target.value)} />
+                                        <input className="input-field text-center" style={{background:'transparent',border:'none',borderRadius:0}} value={item.hsnCode} onChange={e => handleItemChange(index, 'hsnCode', e.target.value)} />
                                     </td>
                                     <td className="p-2">
-                                        <input type="number" className="input-field bg-transparent border-none focus:bg-slate-800 text-right" value={item.qty} onChange={e => handleItemChange(index, 'qty', parseFloat(e.target.value) || 0)} />
+                                        <input type="number" className="input-field text-right" style={{background:'transparent',border:'none',borderRadius:0}} value={item.qty} onChange={e => handleItemChange(index, 'qty', parseFloat(e.target.value) || 0)} />
                                     </td>
                                     <td className="p-2">
-                                        <input className="input-field bg-transparent border-none focus:bg-slate-800 text-center" value={item.unit} onChange={e => handleItemChange(index, 'unit', e.target.value)} />
+                                        <input className="input-field text-center" style={{background:'transparent',border:'none',borderRadius:0}} value={item.unit} onChange={e => handleItemChange(index, 'unit', e.target.value)} />
                                     </td>
                                     <td className="p-2">
-                                        <input type="number" className="input-field bg-transparent border-none focus:bg-slate-800 text-right" value={item.rate} onChange={e => handleItemChange(index, 'rate', parseFloat(e.target.value) || 0)} />
+                                        <input type="number" className="input-field text-right" style={{background:'transparent',border:'none',borderRadius:0}} value={item.rate} onChange={e => handleItemChange(index, 'rate', parseFloat(e.target.value) || 0)} />
                                     </td>
                                     <td className="p-2">
-                                        <input type="number" className="input-field bg-transparent border-none focus:bg-slate-800 text-center" value={item.taxRate} onChange={e => handleItemChange(index, 'taxRate', parseFloat(e.target.value) || 0)} />
+                                        <input type="number" className="input-field text-center" style={{background:'transparent',border:'none',borderRadius:0}} value={item.taxRate} onChange={e => handleItemChange(index, 'taxRate', parseFloat(e.target.value) || 0)} />
                                     </td>
                                     <td className="p-2 text-center">
-                                        <button onClick={() => removeItem(index)} className="text-red-400 hover:text-red-300 transition-colors"><Trash2 size={16} /></button>
+                                        <button onClick={() => removeItem(index)} style={{color:'#dc2626',background:'none',border:'none',cursor:'pointer',padding:'4px',borderRadius:'6px',display:'flex',transition:'background 0.15s'}} onMouseEnter={e=>(e.currentTarget as HTMLElement).style.background='#fee2e2'} onMouseLeave={e=>(e.currentTarget as HTMLElement).style.background='none'}><Trash2 size={15} /></button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                <div className="flex justify-between items-center mt-4">
-                    <button onClick={addItem} className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-sm font-medium">
-                        <Plus size={16} /> Add New Item
+                <div className="flex flex-wrap gap-3 mt-4 items-center justify-between">
+                    <button onClick={addItem} style={{display:'flex',alignItems:'center',gap:'6px',color:'#7c3aed',fontWeight:600,fontSize:'13px',background:'#f5f3ff',border:'1px solid #ede9fe',borderRadius:'8px',padding:'8px 16px',cursor:'pointer',transition:'all 0.18s'}} onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background='linear-gradient(135deg,#7c3aed,#a855f7)';(e.currentTarget as HTMLElement).style.color='#fff';}} onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background='#f5f3ff';(e.currentTarget as HTMLElement).style.color='#7c3aed';}}>
+                        <Plus size={15} /> Add New Item
                     </button>
-
                     <div className="flex items-center gap-2">
-                        <label className="text-xs font-semibold text-slate-400">Vehicle No:</label>
+                        <label className="section-label">Vehicle No:</label>
                         <input
-                            className="input-field w-40 text-sm py-1"
+                            className="input-field text-sm"
+                            style={{width:'160px'}}
                             placeholder="TN 00 AA 0000"
                             value={data.details.vehicleNumber || ''}
                             onChange={e => handleDetailChange('vehicleNumber', e.target.value)}

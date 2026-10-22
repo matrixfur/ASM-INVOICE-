@@ -56,7 +56,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                         <div className="text-[13px] font-medium">{data.sender.subTitle}</div>
                     )}
                     <h2 className="font-bold border-t-2 border-black mt-3 pt-1 inline-block w-full text-lg tracking-wider">
-                        {taxType === 'igst' ? 'IGST INVOICE' : 'INVOICE'}
+                        INVOICE
                     </h2>
                 </div>
 
