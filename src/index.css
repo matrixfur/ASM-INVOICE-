@@ -244,15 +244,461 @@ body {
 .delay-200 { animation-delay: 0.2s; }
 
 /* ============================================
+   A4 INVOICE SHEET
+   ============================================ */
+.a4-scale-host {
+  width: 100%;
+  overflow: hidden;
+}
+
+.a4-scale-page {
+  width: 210mm;
+  transform-origin: top left;
+}
+
+.invoice-a4 {
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  padding: 8mm;
+  box-sizing: border-box;
+  background: #fff;
+  color: #000;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10.5pt;
+  line-height: 1.25;
+  overflow: hidden;
+  position: relative;
+}
+
+.invoice-a4-inner {
+  border: 1.6px solid #000;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.invoice-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.16;
+}
+
+.invoice-watermark img {
+  width: 145mm;
+  height: auto;
+  object-fit: contain;
+}
+
+.invoice-row {
+  display: flex;
+  border-bottom: 1.4px solid #000;
+  flex-shrink: 0;
+}
+
+.invoice-top {
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2.2mm 3.5mm;
+}
+
+.invoice-gstin,
+.invoice-phone {
+  font-weight: 700;
+  font-size: 10.5pt;
+}
+
+.invoice-copy-label {
+  font-style: italic;
+  font-size: 9pt;
+  text-align: right;
+  margin-bottom: 0.6mm;
+}
+
+.invoice-top-right {
+  text-align: right;
+}
+
+.invoice-title-block {
+  text-align: center;
+  padding: 2.4mm 3mm 0;
+  border-bottom: 1.4px solid #000;
+  flex-shrink: 0;
+}
+
+.invoice-company {
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0 0 1.4mm;
+}
+
+.invoice-address {
+  white-space: pre-line;
+  font-size: 10pt;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.invoice-subtitle {
+  font-size: 10pt;
+  font-weight: 600;
+  margin-top: 0.6mm;
+}
+
+.invoice-doc-title {
+  font-size: 13pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 2.2mm 0 0;
+  padding: 1.4mm 0;
+  border-top: 1.4px solid #000;
+}
+
+.invoice-meta-left,
+.invoice-meta-right {
+  width: 50%;
+  padding: 1.8mm 3.5mm;
+  font-weight: 700;
+  font-size: 11pt;
+}
+
+.invoice-meta-left {
+  border-right: 1.4px solid #000;
+}
+
+.invoice-meta-right {
+  text-align: right;
+}
+
+.invoice-to {
+  width: 55%;
+  border-right: 1.4px solid #000;
+  padding: 2.4mm 3.5mm 2.8mm;
+  min-height: 22mm;
+}
+
+.invoice-to-name {
+  font-weight: 700;
+  font-size: 11pt;
+  margin-bottom: 1.2mm;
+}
+
+.invoice-to-address {
+  padding-left: 6mm;
+  white-space: pre-line;
+  text-transform: uppercase;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
+.invoice-to-gstin {
+  padding-left: 6mm;
+  margin-top: 2mm;
+  font-size: 10pt;
+}
+
+.invoice-dispatch {
+  width: 45%;
+  padding: 2.2mm 3mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4mm;
+  font-size: 9.5pt;
+}
+
+.invoice-dispatch > div {
+  display: grid;
+  grid-template-columns: 32mm 1fr;
+  gap: 1mm;
+  font-weight: 700;
+}
+
+.invoice-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.invoice-table-head,
+.invoice-table-row,
+.invoice-table-fill,
+.invoice-total-row {
+  display: flex;
+}
+
+.c-sno { width: 11mm; }
+.c-desc { flex: 1; min-width: 0; }
+.c-hsn { width: 16mm; }
+.c-qty { width: 18mm; }
+.c-rate { width: 22mm; }
+.c-amt { width: 26mm; }
+.c-tax { width: 12mm; }
+.c-total { width: 26mm; }
+
+.c-sno, .c-desc, .c-hsn, .c-qty, .c-rate, .c-amt, .c-tax {
+  border-right: 1.4px solid #000;
+}
+
+.invoice-table-head {
+  border-bottom: 1.4px solid #000;
+  font-weight: 700;
+  font-size: 9pt;
+  text-align: center;
+  min-height: 9.5mm;
+  flex-shrink: 0;
+}
+
+.invoice-table-head > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.15;
+  padding: 1mm 0.6mm;
+}
+
+.invoice-table-row {
+  font-size: 9.5pt;
+  min-height: 7mm;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.invoice-table-row > div {
+  padding: 1.4mm 1.4mm;
+}
+
+.invoice-table-row .c-sno,
+.invoice-table-row .c-hsn,
+.invoice-table-row .c-tax {
+  text-align: center;
+}
+
+.invoice-table-row .c-qty,
+.invoice-table-row .c-rate,
+.invoice-table-row .c-amt,
+.invoice-table-row .c-total {
+  text-align: right;
+}
+
+.invoice-table-row .desc-text {
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.invoice-table-fill {
+  flex: 1;
+  position: relative;
+  min-height: 18mm;
+}
+
+.invoice-table-fill > div {
+  min-height: 100%;
+}
+
+/* Vehicle number at the bottom of the A4 invoice */
+.invoice-vehicle {
+  position: absolute;
+  left: 14mm;
+  bottom: 2.5mm;
+  font-weight: 700;
+  font-size: 10pt;
+  text-transform: uppercase;
+}
+
+.invoice-vehicle-bottom {
+  position: absolute;
+  left: 14mm;
+  bottom: 2.5mm;
+  z-index: 2;
+  font-weight: 700;
+  font-size: 10pt;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.invoice-footer {
+  flex-shrink: 0;
+  border-top: 1.4px solid #000;
+}
+
+.invoice-total-row {
+  border-bottom: 1.4px solid #000;
+  font-weight: 700;
+  font-size: 10.5pt;
+  min-height: 8mm;
+  align-items: center;
+}
+
+.invoice-total-label {
+  flex: 1;
+  text-align: right;
+  padding-right: 3mm;
+}
+
+.invoice-total-row .c-qty,
+.invoice-total-row .c-amt,
+.invoice-total-row .c-total {
+  text-align: right;
+  padding: 1.4mm 1.6mm;
+}
+
+.invoice-tax {
+  border-bottom: 1.4px solid #000;
+  font-size: 9.5pt;
+}
+
+.invoice-tax-head,
+.invoice-tax-row {
+  display: flex;
+  align-items: center;
+  min-height: 6.5mm;
+}
+
+.invoice-tax-head {
+  font-weight: 700;
+  border-bottom: 1px solid #000;
+}
+
+.t-val { width: 32mm; padding-left: 3.5mm; }
+.t-pct { width: 18mm; text-align: center; }
+.t-amt { width: 24mm; text-align: right; padding-right: 3mm; }
+.t-pct-wide { width: 28mm; text-align: center; }
+.t-amt-wide { width: 36mm; text-align: right; padding-right: 3mm; }
+
+.invoice-words-net {
+  display: flex;
+  border-bottom: 1.4px solid #000;
+  min-height: 18mm;
+}
+
+.invoice-words {
+  flex: 1;
+  border-right: 1.4px solid #000;
+  padding: 2.2mm 3.5mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.invoice-words .eoe {
+  font-weight: 700;
+  font-size: 10pt;
+}
+
+.invoice-words .words {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 11pt;
+  margin-top: 3mm;
+}
+
+.invoice-net {
+  width: 72mm;
+}
+
+.round-off {
+  display: flex;
+  justify-content: space-between;
+  padding: 2mm 3mm;
+  font-size: 10.5pt;
+  font-weight: 600;
+}
+
+.net-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1.4px solid #000;
+  padding: 2.4mm 3mm;
+  font-size: 13pt;
+  font-weight: 700;
+  min-height: 10mm;
+}
+
+.invoice-sign {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 2.5mm 3.5mm 2.8mm;
+  min-height: 24mm;
+}
+
+.invoice-sign-block {
+  width: 72mm;
+  text-align: center;
+}
+
+.for-name {
+  font-weight: 700;
+  font-size: 10.5pt;
+  margin-bottom: 14mm;
+}
+
+.sign-line {
+  font-size: 9.5pt;
+  font-weight: 600;
+  border-top: 1.4px solid #000;
+  display: inline-block;
+  padding: 1.2mm 8mm 0;
+}
+
+/* ============================================
    PRINT
    ============================================ */
 @media print {
-  @page { size: A4; margin: 0; }
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body {
+    width: 210mm;
+    height: auto;
+    margin: 0;
+    padding: 0;
     background: #fff;
     color: #000;
-    margin: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .a4-scale-host,
+  .a4-scale-page {
+    width: 210mm !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .invoice-a4 {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    min-height: 297mm !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .invoice-a4:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
   }
 }
