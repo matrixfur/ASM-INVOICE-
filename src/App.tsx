@@ -22,7 +22,7 @@ const BUSINESS_PROFILES: Record<BusinessProfile, { name: string; address: string
   },
   traders: {
     name: 'ASM TRADERS',
-    address: 'SF NO 5/68 PODHANUR MAIN ROAD\nATHUPALAM\nCoimbatore',
+    address: 'SF NO 5/68 PODANUR MAIN ROAD\nKURICHI PIRIVU ATHUPALAM\nCoimbatore - 641008',
     gstin: '33BPKPA1462C1ZK',
     phone: ''
   }

@@ -45,17 +45,17 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                 </div>
 
                 {/* Title Section */}
-                <div className="text-center py-4 border-b-2 border-black">
-                    <h1 className="text-3xl font-bold uppercase tracking-wide font-serif mb-2 text-black">
+                <div className="text-center py-2 border-b-2 border-black">
+                    <h1 className="text-3xl font-bold uppercase tracking-wide font-serif mb-1 text-black">
                         {data.sender.name}
                     </h1>
-                    <div className="whitespace-pre-line leading-tight text-[13px] font-medium mb-1">
+                    <div className="whitespace-pre-line leading-tight text-[13px] font-medium mb-0.5">
                         {data.sender.address}
                     </div>
                     {data.sender.subTitle && (
                         <div className="text-[13px] font-medium">{data.sender.subTitle}</div>
                     )}
-                    <h2 className="font-bold border-t-2 border-black mt-3 pt-1 inline-block w-full text-lg tracking-wider">
+                    <h2 className="font-bold border-t-2 border-black mt-2 pt-1 inline-block w-full text-lg tracking-wider">
                         INVOICE
                     </h2>
                 </div>
@@ -96,9 +96,8 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                     </div>
                 </div>
 
-                {/* Items Table */}
                 {/* Items Table - Converted to Flexbox for perfect alignment with filler */}
-                <div className="flex-grow flex flex-col">
+                <div className="flex-grow flex flex-col min-h-[15cm]">
                     {/* Header */}
                     <div className="flex border-b-2 border-black text-center font-bold text-[11px] h-10 shrink-0">
                         <div className="border-r-2 border-black w-10 py-1 flex items-center justify-center">S.No</div>
@@ -117,15 +116,15 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                         const taxAmt = amount * (item.taxRate / 100);
                         const total = amount + taxAmt;
                         return (
-                            <div key={item.id} className="flex text-[11px] leading-none shrink-0">
-                                <div className="border-r-2 border-black w-10 text-center pt-2 pb-1">{index + 1}</div>
-                                <div className="border-r-2 border-black flex-grow text-left px-3 pt-2 pb-1 uppercase">{item.description}</div>
-                                <div className="border-r-2 border-black w-16 text-center pt-2 pb-1">{item.hsnCode}</div>
-                                <div className="border-r-2 border-black w-16 text-right px-2 pt-2 pb-1 whitespace-nowrap">{item.qty} {item.unit}</div>
-                                <div className="border-r-2 border-black w-20 text-right px-2 pt-2 pb-1">{item.rate.toFixed(2)}</div>
-                                <div className="border-r-2 border-black w-24 text-right px-2 pt-2 pb-1">{amount.toFixed(2)}</div>
-                                <div className="border-r-2 border-black w-12 text-center pt-2 pb-1">{item.taxRate}</div>
-                                <div className="w-24 text-right px-2 pt-2 pb-1">{total.toFixed(2)}</div>
+                            <div key={item.id} className="flex text-[11px] leading-snug shrink-0 min-h-[32px]">
+                                <div className="border-r-2 border-black w-10 text-center py-2.5">{index + 1}</div>
+                                <div className="border-r-2 border-black flex-grow text-left px-3 py-2.5 uppercase">{item.description}</div>
+                                <div className="border-r-2 border-black w-16 text-center py-2.5">{item.hsnCode}</div>
+                                <div className="border-r-2 border-black w-16 text-right px-2 py-2.5 whitespace-nowrap">{item.qty} {item.unit}</div>
+                                <div className="border-r-2 border-black w-20 text-right px-2 py-2.5">{item.rate.toFixed(2)}</div>
+                                <div className="border-r-2 border-black w-24 text-right px-2 py-2.5">{amount.toFixed(2)}</div>
+                                <div className="border-r-2 border-black w-12 text-center py-2.5">{item.taxRate}</div>
+                                <div className="w-24 text-right px-2 py-2.5">{total.toFixed(2)}</div>
                             </div>
                         );
                     })}
@@ -224,7 +223,7 @@ export const InvoicePreview: React.FC<InvoicePreviewProps> = ({ data, label = '(
                     </div>
 
                     {/* Signatory */}
-                    <div className="h-32 flex justify-between items-end p-4">
+                    <div className="h-24 flex justify-between items-end p-3">
                         <div></div>
                         <div className="text-center w-72">
                             <div className="font-bold text-sm mb-12">For {data.sender.name}</div>
