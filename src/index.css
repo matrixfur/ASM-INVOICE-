@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
@@ -9,12 +10,14 @@
 /* ============================================
    BASE
    ============================================ */
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #f3f0ff;
-  color: #1e1b4b;
+  background-color: #0b1020;
+  color: #e5e7eb;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,17 +25,29 @@ body {
 /* ============================================
    SCROLLBAR
    ============================================ */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #f3f0ff; }
-::-webkit-scrollbar-thumb { background: #c4b5fd; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1020;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
 
 /* ============================================
    UTILITIES
    ============================================ */
 @layer utilities {
-
-  /* --- Buttons --- */
+  /* Buttons */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -51,11 +66,13 @@ body {
     box-shadow: 0 4px 15px #7c3aed35;
     letter-spacing: 0.02em;
   }
+
   .btn-primary:hover {
     background: linear-gradient(135deg, #6d28d9, #5b21b6);
     box-shadow: 0 6px 25px #7c3aed50;
     transform: translateY(-1px);
   }
+
   .btn-primary:active {
     transform: translateY(0);
     box-shadow: 0 2px 8px #7c3aed30;
@@ -67,19 +84,20 @@ body {
     justify-content: center;
     gap: 8px;
     padding: 8px 16px;
-    background: #ffffff;
-    color: #6d28d9;
+    background: #171c2e;
+    color: #c4b5fd;
     font-weight: 600;
     font-size: 13px;
     border-radius: 8px;
-    border: 1px solid #c4b5fd;
+    border: 1px solid #374151;
     cursor: pointer;
     transition: all 0.2s ease;
   }
+
   .btn-secondary:hover {
-    background: #f5f3ff;
-    border-color: #7c3aed;
-    color: #5b21b6;
+    background: #222941;
+    border-color: #8b5cf6;
+    color: #ddd6fe;
   }
 
   .btn-success {
@@ -97,6 +115,7 @@ body {
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px #05966930;
   }
+
   .btn-success:hover {
     background: linear-gradient(135deg, #10b981, #059669);
     transform: translateY(-1px);
@@ -109,68 +128,79 @@ body {
     gap: 6px;
     padding: 6px 12px;
     background: transparent;
-    color: #dc2626;
+    color: #f87171;
     border-radius: 6px;
     border: 1px solid transparent;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 13px;
   }
+
   .btn-danger:hover {
-    background: #fee2e2;
-    border-color: #fca5a5;
+    background: #451a1a;
+    border-color: #7f1d1d;
   }
 
-  /* --- Cards --- */
+  /* Cards */
   .card {
-    background: #ffffff;
-    border: 1px solid #ede9fe;
+    background: #111827;
+    color: #e5e7eb;
+    border: 1px solid #273449;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 12px #7c3aed10;
+    box-shadow: 0 8px 24px #00000020;
   }
 
   .card-hover {
     transition: all 0.2s ease;
   }
+
   .card-hover:hover {
-    box-shadow: 0 8px 30px #7c3aed20;
+    box-shadow: 0 12px 30px #00000035;
     transform: translateY(-2px);
-    border-color: #c4b5fd;
+    border-color: #6d5ce7;
   }
 
-  /* --- Inputs --- */
+  /* Inputs */
   .input-field {
     width: 100%;
-    background: #faf9ff;
-    border: 1px solid #ddd6fe;
+    background: #0f172a;
+    border: 1px solid #334155;
     border-radius: 8px;
     padding: 9px 12px;
-    color: #1e1b4b;
+    color: #e5e7eb;
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     transition: all 0.2s ease;
     outline: none;
   }
-  .input-field::placeholder { color: #a78bfa; opacity: 0.6; }
-  .input-field:focus {
-    border-color: #7c3aed;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px #7c3aed15;
-  }
-  .input-field:hover:not(:focus) { border-color: #a78bfa; }
 
-  /* --- Labels --- */
+  .input-field::placeholder {
+    color: #94a3b8;
+    opacity: 0.8;
+  }
+
+  .input-field:focus {
+    border-color: #8b5cf6;
+    background: #111827;
+    box-shadow: 0 0 0 3px #8b5cf630;
+  }
+
+  .input-field:hover:not(:focus) {
+    border-color: #64748b;
+  }
+
+  /* Labels */
   .section-label {
     font-family: 'Outfit', sans-serif;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #7c3aed99;
+    color: #a78bfa;
   }
 
-  /* --- Nav items --- */
+  /* Navigation */
   .nav-item {
     display: flex;
     align-items: center;
@@ -178,7 +208,7 @@ body {
     padding: 9px 12px;
     border-radius: 10px;
     border: 1px solid transparent;
-    color: #6b7280;
+    color: #9ca3af;
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -187,33 +217,36 @@ body {
     text-align: left;
     background: transparent;
   }
+
   .nav-item:hover {
-    background: #f5f3ff;
-    color: #5b21b6;
-    border-color: #ede9fe;
+    background: #1e293b;
+    color: #ddd6fe;
+    border-color: #334155;
   }
+
   .nav-item.active {
-    background: linear-gradient(135deg, #7c3aed15, #6d28d908);
-    color: #6d28d9;
-    border-color: #c4b5fd;
+    background: linear-gradient(135deg, #7c3aed30, #6d28d918);
+    color: #ddd6fe;
+    border-color: #6d5ce7;
     font-weight: 600;
   }
 
-  /* --- Divider --- */
+  /* Divider */
   .divider {
     border: none;
     height: 1px;
-    background: linear-gradient(to right, transparent, #ede9fe, transparent);
+    background: linear-gradient(to right, transparent, #334155, transparent);
     margin: 6px 0;
   }
 
-  /* --- Text gradient --- */
+  /* Gradient text */
   .text-purple-grad {
     background: linear-gradient(135deg, #7c3aed, #a855f7);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
   .text-violet-grad {
     background: linear-gradient(135deg, #4f46e5, #7c3aed, #a855f7);
     -webkit-background-clip: text;
@@ -226,22 +259,133 @@ body {
    ANIMATIONS
    ============================================ */
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes floatPulse {
-  0%, 100% { transform: scale(1); opacity: 0.12; }
-  50%       { transform: scale(1.08); opacity: 0.22; }
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-fade-in-down { animation: fadeInDown 0.45s ease both; }
-.animate-fade-in-up   { animation: fadeInUp 0.45s ease both; }
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.22;
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.45s ease both;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.45s ease both;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+/* ============================================
+   DARK THEME — FORM / APPLICATION UI
+   ============================================ */
+:root {
+  color-scheme: dark;
+  --app-bg: #0b1020;
+  --app-surface: #111827;
+  --app-surface-raised: #171c2e;
+  --app-border: #273449;
+  --app-text: #e5e7eb;
+  --app-muted: #9ca3af;
+  --app-accent: #8b5cf6;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+}
+
+input,
+select,
+textarea {
+  color-scheme: dark;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  background-color: #0f172a;
+  color: #e5e7eb;
+  border-color: #334155;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px #8b5cf630;
+}
+
+.card,
+.bg-white {
+  background-color: #111827;
+  color: #e5e7eb;
+}
+
+.text-gray-900,
+.text-gray-800,
+.text-slate-900,
+.text-slate-800 {
+  color: #f3f4f6;
+}
+
+.text-gray-700,
+.text-gray-600,
+.text-slate-700,
+.text-slate-600 {
+  color: #cbd5e1;
+}
+
+.border-gray-100,
+.border-gray-200,
+.border-slate-100,
+.border-slate-200 {
+  border-color: #273449;
+}
+
+/* Invoice preview and printed paper stay white */
+.invoice-a4 {
+  background: #fff;
+  color: #000;
+  color-scheme: light;
+}
 
 /* ============================================
    A4 INVOICE SHEET
@@ -440,16 +584,46 @@ body {
   display: flex;
 }
 
-.c-sno { width: 11mm; }
-.c-desc { flex: 1; min-width: 0; }
-.c-hsn { width: 16mm; }
-.c-qty { width: 18mm; }
-.c-rate { width: 22mm; }
-.c-amt { width: 26mm; }
-.c-tax { width: 12mm; }
-.c-total { width: 26mm; }
+.c-sno {
+  width: 11mm;
+}
 
-.c-sno, .c-desc, .c-hsn, .c-qty, .c-rate, .c-amt, .c-tax {
+.c-desc {
+  flex: 1;
+  min-width: 0;
+}
+
+.c-hsn {
+  width: 16mm;
+}
+
+.c-qty {
+  width: 18mm;
+}
+
+.c-rate {
+  width: 22mm;
+}
+
+.c-amt {
+  width: 26mm;
+}
+
+.c-tax {
+  width: 12mm;
+}
+
+.c-total {
+  width: 26mm;
+}
+
+.c-sno,
+.c-desc,
+.c-hsn,
+.c-qty,
+.c-rate,
+.c-amt,
+.c-tax {
   border-right: 1.4px solid #000;
 }
 
@@ -573,11 +747,32 @@ body {
   border-bottom: 1px solid #000;
 }
 
-.t-val { width: 32mm; padding-left: 3.5mm; }
-.t-pct { width: 18mm; text-align: center; }
-.t-amt { width: 24mm; text-align: right; padding-right: 3mm; }
-.t-pct-wide { width: 28mm; text-align: center; }
-.t-amt-wide { width: 36mm; text-align: right; padding-right: 3mm; }
+.t-val {
+  width: 32mm;
+  padding-left: 3.5mm;
+}
+
+.t-pct {
+  width: 18mm;
+  text-align: center;
+}
+
+.t-amt {
+  width: 24mm;
+  text-align: right;
+  padding-right: 3mm;
+}
+
+.t-pct-wide {
+  width: 28mm;
+  text-align: center;
+}
+
+.t-amt-wide {
+  width: 36mm;
+  text-align: right;
+  padding-right: 3mm;
+}
 
 .invoice-words-net {
   display: flex;
@@ -665,7 +860,8 @@ body {
     margin: 0;
   }
 
-  html, body {
+  html,
+  body {
     width: 210mm;
     height: auto;
     margin: 0;
@@ -691,6 +887,9 @@ body {
     min-height: 297mm !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    background: #fff !important;
+    color: #000 !important;
+    color-scheme: light !important;
     page-break-inside: avoid;
     break-inside: avoid;
     page-break-after: always;
