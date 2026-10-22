@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { InvoiceData } from './types';
 import { InvoiceForm } from './components/InvoiceForm';
 import { InvoicePreview } from './components/InvoicePreview';
+import { A4Frame } from './components/A4Frame';
 import { InvoiceHistory } from './components/InvoiceHistory';
 import { WelcomePage } from './components/WelcomePage';
 import {
@@ -22,7 +23,7 @@ const BUSINESS_PROFILES: Record<BusinessProfile, { name: string; address: string
   },
   traders: {
     name: 'ASM TRADERS',
-    address: 'SF NO 5/68 PODANUR MAIN ROAD\nKURICHI PIRIVU ATHUPALAM\nCoimbatore - 641008',
+    address: 'SF NO 5/68 PODANUR MAIN ROAD\nKURICHI PIRIVU ATHUPalam\nCoimbatore - 641008',
     gstin: '33BPKPA1462C1ZK',
     phone: ''
   }
@@ -291,7 +292,7 @@ function App() {
             </div>
 
             {/* ── CONTENT ── */}
-            <div className="flex-1 overflow-auto print:p-0 print:overflow-visible"
+            <div className="flex-1 overflow-auto print:p-0 print:overflow-visible print:h-auto"
               style={{ background: 'linear-gradient(160deg,#f3f0ff 0%,#faf9ff 60%,#f0fdf4 100%)' }}>
 
               {/* Desktop: side-by-side */}
@@ -304,16 +305,15 @@ function App() {
                 </div>
                 {/* Preview */}
                 <div className="w-1/2 flex justify-center print:w-full print:block">
-                  <div className="w-full max-w-[21cm]">
-                    <div className="bg-white text-black overflow-hidden print:shadow-none"
+                  <div className="w-full print:max-w-none">
+                    <div className="bg-white text-black print:shadow-none print:bg-transparent"
                       style={{ borderRadius: '4px', boxShadow: '0 8px 40px #7c3aed20' }}>
-                      <InvoicePreview data={data} label="(ORIGINAL)" taxType={taxType} />
-                    </div>
-                    <div className="hidden print:block print:break-before-page">
-                      <InvoicePreview data={data} label="(COPY)" taxType={taxType} />
+                      <A4Frame>
+                        <InvoicePreview data={data} label="(ORIGINAL)" taxType={taxType} />
+                      </A4Frame>
                     </div>
                     <p className="text-center text-xs mt-3 print:hidden" style={{ color: '#a78bfa' }}>
-                      A4 Preview · Scale 100%
+                      A4 sheet · 210 × 297 mm
                     </p>
                   </div>
                 </div>
@@ -334,15 +334,10 @@ function App() {
                   </div>
                 ) : (
                   <div className="p-3">
-                    {/* Scaled preview wrapper */}
-                    <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
-                      <div style={{ transform: 'scale(0.45)', transformOrigin: 'top left', width: '21cm', pointerEvents: 'none' }}>
-                        <div className="bg-white text-black" style={{ boxShadow: '0 4px 20px #7c3aed15' }}>
-                          <InvoicePreview data={data} label="(ORIGINAL)" taxType={taxType} />
-                        </div>
-                      </div>
-                      {/* spacer to account for scaled height */}
-                      <div style={{ height: `calc(${29.7 * 0.45}cm)`, marginTop: `calc(-${29.7 * (1 - 0.45)}cm)`, pointerEvents: 'none' }} />
+                    <div className="bg-white text-black" style={{ boxShadow: '0 4px 20px #7c3aed15', borderRadius: '4px' }}>
+                      <A4Frame>
+                        <InvoicePreview data={data} label="(ORIGINAL)" taxType={taxType} />
+                      </A4Frame>
                     </div>
                     <button onClick={() => setMobileTab('form')}
                       className="w-full mt-3 btn-secondary" style={{ padding: '12px', borderRadius: '12px', fontSize: '13px' }}>
@@ -352,8 +347,8 @@ function App() {
                 )}
               </div>
 
-              {/* Print copies */}
-              <div className="hidden print:block print:break-before-page">
+              {/* Print copy — each sheet is exactly one A4 page */}
+              <div className="hidden print:block">
                 <InvoicePreview data={data} label="(COPY)" taxType={taxType} />
               </div>
             </div>
